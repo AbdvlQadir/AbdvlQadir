@@ -7,72 +7,26 @@
 </head>
 <body>
     <script>
-        let divisible = (num) => {
-    let array1 = [];
-    for ( let i = 1; i <= num; i++ ) {
-        if( i%2 === 0 ) {
-            if ( i % 3 ===  0 && i % 5 === 0 ) {
 
-                array1.push('yu-gi-oh');
+        console.log(stringNum(100));
 
-            } else if( i % 3 === 0 ) {
-
-                array1.push('yu-gi');
-
-            } else if ( i % 5 === 0 ) {
-
-                array1.push("yu-oh");
-
-            } else {
-
-                array1.push('yu');
-
+        function stringNum(N) {
+            const divisor = [2, 3, 5];
+            const divisor_text = ["yu", "gi", "oh"];
+            var output = Array();
+            var text;
+            for (i = 1; i <= N; i++) { //count from 1 to N
+                text = ""; // reset text for the next number
+                for (j = 0; j < divisor.length; j++) {
+                    if (i % divisor[j] === 0) { // check for divisibility and accumulate it in text
+                        text += (text === "") ? divisor_text[j] : "-" + divisor_text[j]; //not first time divisor append -
+                    }
+                }
+                //
+                output[i-1] = (text === "") ? i : text;
             }
-        } else if ( i%3 === 0 ) {
-            if ( i % 2 ===  0 && i % 5 === 0 ) {
-
-                array1.push('yu-gi-oh');
-
-            } else if( i % 2 === 0 ) {
-
-                array1.push('gi-yu');
-
-            } else if ( i % 5 === 0 ) {
-
-                array1.push("gi-oh");
-
-            } else {
-
-                array1.push('gi');
-
-            }
-        }else if ( i%5 === 0 ) {
-            if ( i % 2 ===  0 && i % 3 === 0 ) {
-
-                array1.push('yu-gi-oh');
-
-            } else if( i % 2 === 0 ) {
-
-                array1.push('oh-yu');
-
-            } else if ( i % 3 === 0 ) {
-
-                array1.push("oh-gi");
-
-            } else {
-
-                array1.push('oh');
-
-            }
-        } else {
-
-            array1.push(i);
+            return output;
         }
-    }
-    return array1;
-}
-
-console.log( divisible(100) );
     </script>
 </body>
 </html>
